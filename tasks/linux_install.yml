@@ -28,9 +28,9 @@
   package_facts:
     manager: auto
 
-- name: Debug packages
-  debug:
-    msg: "{{ ansible_facts.packages }}"
+#- name: Debug packages
+#  debug:
+#    msg: "{{ ansible_facts.packages }}"
 
 - name: Ensure botocore and boto3 modules are installed
   pip:
