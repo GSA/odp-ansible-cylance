@@ -50,12 +50,14 @@
   yum:
     name: /tmp/{{ cylance_version }}
     state: present
+  notify: "systemd_restart_cylance"
   when: cylance_s3_bucket != "" and ansible_pkg_mgr == "yum"
 
 - name: Remove the Cylance installer 
   file:
-    path: /tmp/"{{ cylance_version }}"
+    path: /tmp/{{ cylance_version }}
     state: absent
+  when: cylance_s3_bucket != ""    
 
 - name: Update cylancesvc service config with HTTP proxy IF required
   lineinfile:
