@@ -17,7 +17,7 @@ Requirements
 ### Cylance Requirements
 
 * Active Cylance account
-* Cylance package available in your OS software repository
+* Cylance package available in your OS software repository or stored in an ***AWS*** S3 bucket
 * Cylance access token
 
 Role Variables
@@ -52,8 +52,6 @@ Example when downloading install from S3 bucket
   roles:
     - { role: odp-ansible-cylance, cylance_zone: "My Cool Zone", cylance_token: "123itsamystery", cylance_version: "CylancePROTECT-2.1.1560-1525", cylance_http_proxy: "http://myproxy.com:1234", cylance_https_proxy: "https://myproxy.com:1234", cylance_s3_bucket: "my_package_s3_bucket", cylance_s3_prefix: "packages" }
 ```
-
-
 
 License
 -------
