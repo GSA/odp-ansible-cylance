@@ -10,28 +10,28 @@
 - name: Configure Cylance
   template:
     src: config_defaults.j2
-    dest: /opt/cylance/opt/cylance/config_defaults.txt
+    dest: /opt/cylance/config_defaults.txt
 
 - name: Install Cylance package
   package:
-    name: {{ cylance_version }}
+    name: "{{ cylance_version }}"
     state: present 
   notify: "systemd_restart_cylance"
 
 - name: Update cylancesvc service config with proxies IF required
   lineinfile:
     path: /usr/lib/systemd/system/cylancesvc.service
-    line: "Environment\=http_proxy\={{ cylance_http_proxy }}"
-    insert_before: '\[Install\]'
+    line: "Environment=http_proxy={{ cylance_http_proxy }}"
+    insertbefore: '\[Install\]'
     regexp: 'Environment\=http_proxy\='
-  when: "{{ cylance_http_proxy }}" != ""
+  when: cylance_http_proxy !=  ""
   notify: "systemd_restart_cylance"
 
 - name: Update cylancesvc service config with proxies IF required
   lineinfile:
     path: /usr/lib/systemd/system/cylancesvc.service
-    line: "Environment\=http_proxys\={{ cylance_https_proxy }}"
-    insert_before: '\[Install\]'
+    line: "Environment=http_proxys={{ cylance_https_proxy }}"
+    insertbefore: '\[Install\]'
     regexp: 'Environment\=https_proxy\='
-  when: "{{ cylance_https_proxy }}" != ""
+  when: cylance_https_proxy != ""
   notify: "systemd_restart_cylance"
