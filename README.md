@@ -53,6 +53,13 @@ Example when downloading install from S3 bucket
     - { role: odp-ansible-cylance, cylance_zone: "My Cool Zone", cylance_token: "123itsamystery", cylance_version: "CylancePROTECT-2.1.1560-1525", cylance_http_proxy: "http://myproxy.com:1234", cylance_https_proxy: "https://myproxy.com:1234", cylance_s3_bucket: "my_package_s3_bucket", cylance_s3_prefix: "packages" }
 ```
 
+Todo
+-------
+
+* Currently the S3 copy to local happens ***EVERY*** time the role is deployed.  There needs to be a check, maybe with package_facts, to determine if the specific version of the package is installed and if so skip.  
+  * This is potentially costly and time consuming if run outside of an image build pipeline.
+
+
 License
 -------
 
