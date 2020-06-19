@@ -1,0 +1,4 @@
+InstallToken={{ cylance_token }}
+SelfProtectionLevel=1
+VenueZone={{ cylance_zone }}
+LogLevel=1
