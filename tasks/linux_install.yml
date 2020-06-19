@@ -1,0 +1,37 @@
+---
+# tasks file for odp-ansible-cylance for Amazon Linux 2
+
+- name: Create a directory if it does not exist
+  file:
+    path: /opt/cylance/opt/cylance/
+    state: directory
+    mode: '0755'
+
+- name: Configure Cylance
+  template:
+    src: config_defaults.j2
+    dest: /opt/cylance/opt/cylance/config_defaults.txt
+
+- name: Install Cylance package
+  package:
+    name: {{ cylance_version }}
+    state: present 
+  notify: "systemd_restart_cylance"
+
+- name: Update cylancesvc service config with proxies IF required
+  lineinfile:
+    path: /usr/lib/systemd/system/cylancesvc.service
+    line: "Environment\=http_proxy\={{ cylance_http_proxy }}"
+    insert_before: '\[Install\]'
+    regexp: 'Environment\=http_proxy\='
+  when: "{{ cylance_http_proxy }}" != ""
+  notify: "systemd_restart_cylance"
+
+- name: Update cylancesvc service config with proxies IF required
+  lineinfile:
+    path: /usr/lib/systemd/system/cylancesvc.service
+    line: "Environment\=http_proxys\={{ cylance_https_proxy }}"
+    insert_before: '\[Install\]'
+    regexp: 'Environment\=https_proxy\='
+  when: "{{ cylance_https_proxy }}" != ""
+  notify: "systemd_restart_cylance"
