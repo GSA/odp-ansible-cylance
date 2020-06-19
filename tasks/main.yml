@@ -1,2 +1,5 @@
 ---
 # tasks file for odp-ansible-cylance
+
+- name: Install for Linux
+  include: linux_install.yml

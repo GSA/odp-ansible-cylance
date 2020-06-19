@@ -1,2 +1,9 @@
 ---
 # handlers file for odp-ansible-cylance
+
+- name: Systemd Cylance
+  systemd:
+    daemon_reload: yes
+    name: cylancesvc
+    state: restarted
+  listen: "systemd_restart_cylance"
