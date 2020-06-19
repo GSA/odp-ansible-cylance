@@ -42,13 +42,13 @@
   aws_s3:
     bucket: "{{ cylance_s3_bucket }}"
     object: "{{ cylance_s3_prefix }}/{{ cylance_version }}"
-    dest: /tmp/"{{ cylance_version }}"
+    dest: /tmp/{{ cylance_version }}
     mode: get
   when: cylance_s3_bucket != ""
 
 - name: Install Cylance using yum if package manager is yum
   yum:
-    name: /tmp/"{{ cylance_version }}"
+    name: /tmp/{{ cylance_version }}
     state: present
   when: cylance_s3_bucket != "" and ansible_pkg_mgr == "yum"
 
