@@ -3,6 +3,6 @@
 
 cylance_token: "XXXXXX"
 cylance_zone: "set_zone_here"
-cylance_http_proxy: "http://myproxy.com:1234"
-cylance_https_proxy: "https://myproxy.com:1234"
+cylance_http_proxy: ""
+cylance_https_proxy: ""
 cylance_version: "CylancePROTECT-2.1.1560-1525"

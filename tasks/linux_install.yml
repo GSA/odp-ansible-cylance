@@ -30,7 +30,7 @@
 - name: Update cylancesvc service config with proxies IF required
   lineinfile:
     path: /usr/lib/systemd/system/cylancesvc.service
-    line: "Environment=http_proxys={{ cylance_https_proxy }}"
+    line: "Environment=https_proxy={{ cylance_https_proxy }}"
     insertbefore: '\[Install\]'
     regexp: 'Environment\=https_proxy\='
   when: cylance_https_proxy != ""
