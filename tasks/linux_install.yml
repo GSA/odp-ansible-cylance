@@ -82,3 +82,9 @@
     regexp: 'Environment\=https_proxy\='
   when: cylance_https_proxy != ""
   notify: "systemd_restart_cylance"
+
+- name: Enable and start service cylancesvc
+  service:
+    name: cylancesvc
+    enabled: yes
+    state: started
