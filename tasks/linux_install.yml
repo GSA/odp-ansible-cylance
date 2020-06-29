@@ -87,4 +87,3 @@
   service:
     name: cylancesvc
     enabled: yes
-    state: started

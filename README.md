@@ -68,4 +68,5 @@ BSD
 Author Information
 ------------------
 
-GSA ODP Team
+GSA OCISO DevSecops Team - ociso-devsecops@gsa.gov
+Github Repository - https://github.com/GSA/odp-ansible-cylance
