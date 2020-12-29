@@ -24,9 +24,9 @@
 # Download and install Cylance package from s3 bucket when cylance_s3_bucket is set
 
 
-- name: Add packages installed to facts
-  package_facts:
-    manager: auto
+# - name: Add packages installed to facts
+#   package_facts:
+#     manager: auto
 
 #- name: Debug packages
 #  debug:
