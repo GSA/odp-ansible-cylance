@@ -34,7 +34,7 @@
 
 - name: Ensure botocore and boto3 modules are installed
   pip:
-    name:         [ "boto3", "botocore"]
+    name:         [ "boto", "boto3", "botocore"]
     executable: pip3
     extra_args:   "--user"
   when: cylance_s3_bucket != ""
