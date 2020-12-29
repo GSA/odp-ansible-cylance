@@ -35,9 +35,9 @@
 - name: Ensure botocore and boto3 modules are installed
   pip:
     name:         [ "boto3", "botocore"]
-    #extra_args:   "--user"
+    executable: pip3
+    extra_args:   "--user"
   when: cylance_s3_bucket != ""
-
 
 - name: Download from s3 bucket when cylance_s3_bucket is set
   aws_s3:
